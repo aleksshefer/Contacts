@@ -4,11 +4,11 @@ public class ContactDao {
         private final long id;
         private String firstName;
         private String lastName;
-        private int phoneNUmber;
+        private String phoneNUmber;
         private String email;
 
 
-    public ContactDao(long id, String firstName, String lastName, int phoneNUmber, String email) {
+    public ContactDao(long id, String firstName, String lastName, String phoneNUmber, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,11 +36,11 @@ public class ContactDao {
         this.lastName = lastName;
     }
 
-    public int getPhoneNUmber() {
+    public String getPhoneNUmber() {
         return phoneNUmber;
     }
 
-    public void setPhoneNUmber(int phoneNUmber) {
+    public void setPhoneNUmber(String phoneNUmber) {
         this.phoneNUmber = phoneNUmber;
     }
 

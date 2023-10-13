@@ -3,6 +3,7 @@ package ru.shefer.repository;
 import org.springframework.stereotype.Service;
 import ru.shefer.dao.ContactDao;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -16,12 +17,23 @@ public class InMemoryContactRepository implements ContactRepository {
     }
 
     @Override
-    public Optional<ContactDao> addContact(String firstName, String lastName, int phoneNUmber, String email) {
+    public Optional<ContactDao> addContact(String firstName, String lastName, String phoneNUmber, String email) {
         long id = contacts.size() + 1;
         ContactDao contact = new ContactDao(id, firstName, lastName, phoneNUmber, email);
         contacts.put(id, contact);
 
         return Optional.of(contact);
+    }
+
+    @Override
+    public List<ContactDao> addAllContacts(Collection<ContactDao> contacts) {
+        contacts.forEach(contactDao -> addContact(
+                contactDao.getFirstName(),
+                contactDao.getLastName(),
+                contactDao.getPhoneNUmber(),
+                contactDao.getEmail())
+        );
+        return getAllContacts();
     }
 
     @Override
@@ -53,7 +65,7 @@ public class InMemoryContactRepository implements ContactRepository {
     }
 
     @Override
-    public Optional<ContactDao> setPhoneNUmber(long id, int phoneNumber) {
+    public Optional<ContactDao> setPhoneNUmber(long id, String phoneNumber) {
         ContactDao contact = contacts.get(id);
         contact.setPhoneNUmber(phoneNumber);
 
@@ -66,5 +78,13 @@ public class InMemoryContactRepository implements ContactRepository {
         contact.setEmail(email);
 
         return Optional.of(contact);
+    }
+
+    @Override
+    public Optional<ContactDao> deleteContact(long id) {
+        Optional<ContactDao> contactToDelete = getContact(id);
+
+        contacts.remove(id);
+        return contactToDelete;
     }
 }

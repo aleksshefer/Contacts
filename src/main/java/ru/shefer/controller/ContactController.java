@@ -17,13 +17,22 @@ public class ContactController {
     }
 
     @PostMapping
+    @RequestMapping("/add-contact")
     public Optional<ContactDto> addContact(
             @RequestParam String firstName,
             @RequestParam String lastName,
-            @RequestParam int phoneNumber,
+            @RequestParam String phoneNumber,
             @RequestParam String email
     ) {
         return contactService.addContact(firstName, lastName, phoneNumber, email);
+    }
+
+    @PostMapping
+    @RequestMapping("/add-contact-from-csv")
+    public List<ContactDto> addContact(
+            @RequestParam String filePath
+    ) {
+        return contactService.addContactsFromCSV(filePath);
     }
 
     @GetMapping("/{contactId}")
@@ -58,9 +67,9 @@ public class ContactController {
     }
 
     @PutMapping("/setPhoneNumber/{contactId}/{phoneNumber}")
-    public Optional<ContactDto> setLastName(
+    public Optional<ContactDto> setPhoneNumber(
             @PathVariable long contactId,
-            @PathVariable int phoneNumber
+            @PathVariable String phoneNumber
     ) {
 
         return contactService.setPhoneNUmber(contactId, phoneNumber);
@@ -74,4 +83,13 @@ public class ContactController {
 
         return contactService.setEmail(contactId, email);
     }
+
+    @DeleteMapping("/delete/{contactId}")
+    public Optional<ContactDto> deleteContact(
+            @PathVariable long contactId
+    ) {
+
+        return contactService.deleteContact(contactId);
+    }
+
 }
