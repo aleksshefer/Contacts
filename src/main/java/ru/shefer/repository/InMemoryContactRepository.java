@@ -30,7 +30,7 @@ public class InMemoryContactRepository implements ContactRepository {
         contacts.forEach(contactDao -> addContact(
                 contactDao.getFirstName(),
                 contactDao.getLastName(),
-                contactDao.getPhoneNUmber(),
+                contactDao.getPhoneNumber(),
                 contactDao.getEmail())
         );
         return getAllContacts();
@@ -67,7 +67,7 @@ public class InMemoryContactRepository implements ContactRepository {
     @Override
     public Optional<ContactDao> setPhoneNUmber(long id, String phoneNumber) {
         ContactDao contact = contacts.get(id);
-        contact.setPhoneNUmber(phoneNumber);
+        contact.setPhoneNumber(phoneNumber);
 
         return Optional.of(contact);
     }

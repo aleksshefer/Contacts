@@ -75,7 +75,7 @@ public class JdbcContactRepository implements ContactRepository {
                 new MapSqlParameterSource()
                         .addValue("firstName", contactDao.getFirstName())
                         .addValue("lastName", contactDao.getLastName())
-                        .addValue("phoneNumber", contactDao.getPhoneNUmber())
+                        .addValue("phoneNumber", contactDao.getPhoneNumber())
                         .addValue("email", contactDao.getEmail())
         ).toArray(MapSqlParameterSource[]::new);
 

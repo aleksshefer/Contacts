@@ -12,7 +12,7 @@ public class ContactDaoToDtoConverter implements Converter<ContactDao, ContactDt
                 contactDao.getId(),
                 contactDao.getFirstName(),
                 contactDao.getLastName(),
-                contactDao.getPhoneNUmber(),
+                contactDao.getPhoneNumber(),
                 contactDao.getEmail());
     }
 }

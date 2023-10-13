@@ -36,11 +36,11 @@ public class ContactDao {
         this.lastName = lastName;
     }
 
-    public String getPhoneNUmber() {
+    public String getPhoneNumber() {
         return phoneNUmber;
     }
 
-    public void setPhoneNUmber(String phoneNUmber) {
+    public void setPhoneNumber(String phoneNUmber) {
         this.phoneNUmber = phoneNUmber;
     }
 
