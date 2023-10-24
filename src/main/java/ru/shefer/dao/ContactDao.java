@@ -1,23 +1,48 @@
 package ru.shefer.dao;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "CONTACT")
 public class ContactDao {
-        private final long id;
-        private String firstName;
-        private String lastName;
-        private String phoneNUmber;
-        private String email;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column(name = "email")
+    private String email;
 
 
-    public ContactDao(long id, String firstName, String lastName, String phoneNUmber, String email) {
+    public ContactDao(long id, String firstName, String lastName, String phoneNumber, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNUmber = phoneNUmber;
+        this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public ContactDao(String firstName, String lastName, String phoneNumber, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    public ContactDao() {
     }
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -37,11 +62,11 @@ public class ContactDao {
     }
 
     public String getPhoneNumber() {
-        return phoneNUmber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNUmber) {
-        this.phoneNUmber = phoneNUmber;
+        this.phoneNumber = phoneNUmber;
     }
 
     public String getEmail() {

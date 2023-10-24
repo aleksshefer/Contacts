@@ -1,6 +1,5 @@
 package ru.shefer.repository;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -13,7 +12,6 @@ import ru.shefer.dao.ContactDao;
 import java.util.*;
 
 @Repository
-@Primary
 public class JdbcContactRepository implements ContactRepository {
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
