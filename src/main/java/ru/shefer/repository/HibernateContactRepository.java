@@ -3,7 +3,6 @@ package ru.shefer.repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import ru.shefer.dao.ContactDao;
 
@@ -13,7 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Primary
 public class HibernateContactRepository implements ContactRepository {
     private final SessionFactory sessionFactory;
 
